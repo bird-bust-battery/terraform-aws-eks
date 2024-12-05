@@ -216,7 +216,7 @@ module "eks_mng_al2023_custom_template" {
 module "eks_mng_bottlerocket_no_op" {
   source = "../../modules/_user_data"
 
-  ami_type = "BOTTLEROCKET_x86_64"
+  ami_type = "BOTTLEROCKET_x86_64_FIPS"
 
   # Hard requirement
   cluster_service_cidr = local.cluster_service_cidr
@@ -225,7 +225,7 @@ module "eks_mng_bottlerocket_no_op" {
 module "eks_mng_bottlerocket_additional" {
   source = "../../modules/_user_data"
 
-  ami_type             = "BOTTLEROCKET_x86_64"
+  ami_type             = "BOTTLEROCKET_x86_64_FIPS"
   cluster_service_cidr = local.cluster_service_cidr
 
   bootstrap_extra_args = <<-EOT
@@ -238,7 +238,7 @@ module "eks_mng_bottlerocket_additional" {
 module "eks_mng_bottlerocket_custom_ami" {
   source = "../../modules/_user_data"
 
-  ami_type = "BOTTLEROCKET_x86_64"
+  ami_type = "BOTTLEROCKET_x86_64_FIPS"
 
   cluster_name         = local.name
   cluster_endpoint     = local.cluster_endpoint
@@ -260,7 +260,7 @@ module "eks_mng_bottlerocket_custom_ami" {
 module "eks_mng_bottlerocket_custom_template" {
   source = "../../modules/_user_data"
 
-  ami_type = "BOTTLEROCKET_x86_64"
+  ami_type = "BOTTLEROCKET_x86_64_FIPS"
 
   cluster_name        = local.name
   cluster_endpoint    = local.cluster_endpoint
@@ -535,7 +535,7 @@ module "self_mng_al2023_custom_template" {
 module "self_mng_bottlerocket_no_op" {
   source = "../../modules/_user_data"
 
-  ami_type = "BOTTLEROCKET_x86_64"
+  ami_type = "BOTTLEROCKET_x86_64_FIPS"
 
   is_eks_managed_node_group = false
 
@@ -546,7 +546,7 @@ module "self_mng_bottlerocket_no_op" {
 module "self_mng_bottlerocket_bootstrap" {
   source = "../../modules/_user_data"
 
-  ami_type = "BOTTLEROCKET_x86_64"
+  ami_type = "BOTTLEROCKET_x86_64_FIPS"
 
   enable_bootstrap_user_data = true
   is_eks_managed_node_group  = false
@@ -568,7 +568,7 @@ module "self_mng_bottlerocket_bootstrap" {
 module "self_mng_bottlerocket_custom_template" {
   source = "../../modules/_user_data"
 
-  ami_type = "BOTTLEROCKET_x86_64"
+  ami_type = "BOTTLEROCKET_x86_64_FIPS"
 
   enable_bootstrap_user_data = true
   is_eks_managed_node_group  = false

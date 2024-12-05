@@ -93,7 +93,7 @@ module "eks" {
     bottlerocket = {
       name = "bottlerocket-self-mng"
 
-      ami_type      = "BOTTLEROCKET_x86_64"
+      ami_type      = "BOTTLEROCKET_x86_64_FIPS"
       ami_id        = data.aws_ami.eks_default_bottlerocket.id
       instance_type = "m5.large"
       desired_size  = 2

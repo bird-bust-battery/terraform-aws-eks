@@ -145,12 +145,12 @@ module "eks" {
       # so we need to disable it to use the default template provided by the AWS EKS managed node group service
       use_custom_launch_template = false
 
-      ami_type = "BOTTLEROCKET_x86_64"
+      ami_type = "BOTTLEROCKET_x86_64_FIPS"
     }
 
     # Adds to the AWS provided user data
     bottlerocket_add = {
-      ami_type = "BOTTLEROCKET_x86_64"
+      ami_type = "BOTTLEROCKET_x86_64_FIPS"
 
       use_latest_ami_release_version = true
 
@@ -166,7 +166,7 @@ module "eks" {
     bottlerocket_custom = {
       # Current bottlerocket AMI
       ami_id   = data.aws_ami.eks_default_bottlerocket.image_id
-      ami_type = "BOTTLEROCKET_x86_64"
+      ami_type = "BOTTLEROCKET_x86_64_FIPS"
 
       # Use module user data template to bootstrap
       enable_bootstrap_user_data = true
@@ -441,7 +441,7 @@ module "eks_managed_node_group" {
   cluster_primary_security_group_id = module.eks.cluster_primary_security_group_id
   vpc_security_group_ids            = [module.eks.node_security_group_id]
 
-  ami_type = "BOTTLEROCKET_x86_64"
+  ami_type = "BOTTLEROCKET_x86_64_FIPS"
 
   # this will get added to what AWS provides
   bootstrap_extra_args = <<-EOT
